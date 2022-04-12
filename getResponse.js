@@ -2,16 +2,6 @@ let Natural = require('natural');
 const nlp_sentiment = require('sentiment');
 const sentiment_instance = new nlp_sentiment(); //for sentiment analysis
 const wordvecs = require('./wordVecs.js');
-const fs = require("fs");
-const temp_list = require('./list');
-
-// Imports the Google Cloud client library
-const {Translate} = require('@google-cloud/translate').v2;
-
-// Creates a client
-const projectId = 'verdant-cable-346903'
-const keyFilename = "./verdant-cable-346903-a19a6cc308c3.json"
-const translate = new Translate({projectId, keyFilename});
 
 //this is what the bot knows
 var vocabulary = [
@@ -367,55 +357,18 @@ function analyzeSentiment(input) {
 	return sentiment_instance.analyze(input).comparative;
 }
 
-// var lang = 'fr';
-// var input2 = 'gh';
-// var match = 'fhghgfh';
-// //Assign Values
-// function setLang(input){
-// 	lang = input;
-// }
-// function setInput2(input){
-// 	input2 = input;
-// }
-// function setMatch(input){
-// 	match = input;
-// }
-//all the input-parsing code goes into this function
-var x = "1";
 function getResponse(input){
-
-    //this strips the punctuation and the spaces from user input
+//this strips the punctuation and the spaces from user input
    // var punctRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g;
 
     //convert to lower case | remove punctuation | remove spaces
    // var userInput = input.replace(punctRE, '').replace(/\s+/g, ' ').toLowerCase();
     //leaving above old code in case we want to test the old code
 
-	// var userInput = input.replace(punctRE, '').toLowerCase();
+  //  var userInput = input.replace(punctRE, '').toLowerCase();
 
-	detectLanguage(input).then(
-		function(value) {
-			let lang = value;
-			translateText(input, 'en').then(
-				function(trans) {
-					x="2";
-					let input2 = trans;
-					let output = {
-						language: lang,
-						query: input2};
-					fs.writeFile("list.json", JSON.stringify(output), err => {
-						// Checking for errors
-						if (err) throw err; 
-						console.log("Done writing"); // Success
-					});
-			});
-	});
-	
-	var inputs = require('./list.json');
-	console.log(inputs.language);
-	console.log(x);
 	//calculate the sentiment
-	let sentiment = analyzeSentiment(inputs.query);
+	let sentiment = analyzeSentiment(input);
 	//if sentiment is overwhelmingly positive or negative, return a different response
 	if(sentiment > 0.4){
 		return positive_vocabulary[Math.floor(Math.random() * positive_vocabulary.length)];
@@ -426,43 +379,12 @@ function getResponse(input){
 
     // get stemmed version of user input without spaces
     // userInput = stemInput(input);
-console.log(inputs.language);
-    var bestmatching = bestMatch(inputs.query.toLowerCase());
-	if (bestmatching === -1){
-		translateText(wordvec(inputs.query), inputs.language).then(
-			function(value){
-				let output = {
-					language: inputs.language,
-					query: value};
-				fs.writeFile("list.json", JSON.stringify(output), err => {
-					// Checking for errors
-					if (err) throw err; 
-					console.log("Done writing"); // Success
-				});
-				
-			}
-		);
-		var inputs = require('./list.json');
-		console.log(inputs.language);
-		return inputs.query;
-	}else{
-		translateText(getResponseFromVocabulary(bestmatching), inputs.language).then(
-			function(value){
-				let output = {
-					language: inputs.language,
-					query: value};
-				fs.writeFile("list.json", JSON.stringify(output), err => {
-					// Checking for errors
-					if (err) throw err; 
-					console.log("Done writing"); // Success
-				});
-				
-			}
-		);
-		var inputs = require('./list.json');
-		console.log(inputs.language);
-		return inputs.query;
-	}
+
+    var bestmatching = bestMatch(input.toLowerCase());
+	if (bestmatching === -1)
+		return  wordvec(input);
+	 else
+		return getResponseFromVocabulary(bestmatching);
     // var respo = getResponseFromVocabulary(bestmatching);
 }
 // word2vec function
@@ -558,30 +480,6 @@ var Word2VecUtils = (function () {
 	};
 })();
 
-async function detectLanguage(text) {
-	let [detections] = await translate.detect(text);
-	detections = Array.isArray(detections) ? detections : [detections];
-	console.log('Detections:');
-	let detect = '';
-	detections.forEach(detection => {
-		detect += `${detection.language}`;
-	});
-	return detect;
-  }
-
-async function translateText(text, target) {
-	// Translates the text into the target language. "text" can be a string for
-	// translating a single piece of text, or an array of strings for translating
-	// multiple texts.
-	let [translations] = await translate.translate(text, target);
-	translations = Array.isArray(translations) ? translations : [translations];
-	console.log('Translations:');
-	let trans = '';
-	translations.forEach((translation, i) => {
-		trans += `${translation}`;
-	});
-	return trans;
-}
 module.exports = getResponse;
 module.exports.getIdea = getIdea;
 module.exports.wordvec = wordvec;

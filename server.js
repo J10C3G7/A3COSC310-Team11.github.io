@@ -12,7 +12,21 @@ server.post('/api/', (req, res) => {
     console.log('input: ', input);
     const output = getResponse(input);
     console.log('output: ', output);
-    res.json({output: output});
+
+    const { translate } = require('bing-translate-api');
+
+    translate(output, null, 'fr', true).then(ress => {
+            
+        console.log(ress.translation);
+        const frOutput = ress.translation;
+        
+        
+        res.json({output: output, frOutput: frOutput});
+
+    }).catch(err => {
+        console.error(err);
+    });
+
 });
 
 server.get('/api/idea', (req, res) => {

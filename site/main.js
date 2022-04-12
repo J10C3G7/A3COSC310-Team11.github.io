@@ -70,8 +70,10 @@ function whatSaid() {
     .then(res => res.json())
     .then(data => {
         const respo =  data.output;
+        const frRespo = data.frOutput;
         //print it out
-        addToChatLog('bot', respo);
+        addToChatLog('English', (respo +"<br> French: "+frRespo));
+        
         spinImage();
     });
 }
@@ -100,7 +102,7 @@ const addToChatLog = (poster, message) => {
     //print out
     document.getElementById('botRespo').innerHTML = chatLog.reduce(
         (str, current_message, _) => {
-            if (current_message.poster === 'bot'){
+            if (current_message.poster === 'English'){
                 swap = `<h2 class="${current_message.poster}_message">${current_message.poster}: ${current_message.message}</h2>`;
                 return str;
             }
@@ -112,33 +114,7 @@ const addToChatLog = (poster, message) => {
     document.getElementById('botRespo').innerHTML = document.getElementById('botRespo').innerHTML.replace('h2', 'h1');
 }
 
-// Imports the Google Cloud client library
-// const {Translate} = require('@google-cloud/translate').v2;
 
-// async function detectLanguage(text) {
-// 	let [detections] = await translate.detect(text);
-// 	detections = Array.isArray(detections) ? detections : [detections];
-// 	// console.log('Detections:');
-// 	let detect = '';
-// 	detections.forEach(detection => {
-// 		detect += `${detection.language}`;
-// 	});
-// 	return detect;
-//   }
-
-// async function translateText(text, target) {
-// 	// Translates the text into the target language. "text" can be a string for
-// 	// translating a single piece of text, or an array of strings for translating
-// 	// multiple texts.
-// 	let [translations] = await translate.translate(text, target);
-// 	translations = Array.isArray(translations) ? translations : [translations];
-// 	// console.log('Translations:');
-// 	let trans = '';
-// 	translations.forEach((translation, i) => {
-// 		trans += `${translation}`;
-// 	});
-// 	return trans;
-// }
 function fren() {
     document.getElementById('title').innerHTML = "Discuter avec un astronaute";
     document.getElementById('header1').innerHTML = "Bonjour, je suis astronaute. Dites bonjour ci-dessous";
@@ -150,11 +126,10 @@ function fren() {
 
 }
 function engl() {
-    document.getElementById('title').innerHTML = 'title';
-    document.getElementById('header1').innerHTML = 'title';
-    document.getElementById('header2').innerHTML = header2;
-    document.getElementById('send').innerHTML = send;
-    // document.getElementById('ideas').innerHTML = ideas;
-    document.getElementById('french').innerHTML = french;
-    document.getElementById('english').innerHTML = english;
+    document.getElementById('title').innerHTML = 'Chatting with an Astronaut';
+    document.getElementById('header1').innerHTML = "Hello, I'm an Astronaut. Say hi below";
+    document.getElementById('header2').innerHTML = "Ask me Anything!";
+    document.getElementById('send').innerHTML = "Chat";
+    document.getElementById('french').innerHTML = "French";
+    document.getElementById('english').innerHTML = "English";
 }
