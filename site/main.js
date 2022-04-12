@@ -14,6 +14,33 @@ document.addEventListener("DOMContentLoaded", () => {
 //this is the chat log
 const chatLog = [];
 
+// Imports the Google Cloud client library
+// const {Translate} = require('@google-cloud/translate').v2;
+
+// // // Creates a client
+// const projectId = 'verdant-cable-346903';
+// const keyFilename = "./verdant-cable-346903-a19a6cc308c3.json";
+// const translate = new Translate({projectId, keyFilename});
+
+//webpage text
+const title = document.getElementById('title').innerHTML;
+const header1 = document.getElementById('header1').innerHTML;
+const header2 = document.getElementById('header2').innerHTML;
+const send = document.getElementById('send').innerHTML;
+// const ideas = document.getElementById('ideas').innerHTML;
+const french = document.getElementById('french').innerHTML;
+const english = document.getElementById('english').innerHTML;
+
+//since all the vocabulary is on the server, query the server for an idea
+// function fillidea() {
+//     fetch('http://localhost:4000/api/idea')
+//     .then(res => res.json())
+//     .then(data => {
+//         var input = document.getElementById('userInput');
+//         input.value = data.idea;
+//     });
+// }
+
 //since all the vocabulary is on the server, query the server for an idea
 function fillidea() {
     fetch('http://localhost:4000/api/idea')
@@ -83,4 +110,51 @@ const addToChatLog = (poster, message) => {
         ''
     );
     document.getElementById('botRespo').innerHTML = document.getElementById('botRespo').innerHTML.replace('h2', 'h1');
+}
+
+// Imports the Google Cloud client library
+// const {Translate} = require('@google-cloud/translate').v2;
+
+// async function detectLanguage(text) {
+// 	let [detections] = await translate.detect(text);
+// 	detections = Array.isArray(detections) ? detections : [detections];
+// 	// console.log('Detections:');
+// 	let detect = '';
+// 	detections.forEach(detection => {
+// 		detect += `${detection.language}`;
+// 	});
+// 	return detect;
+//   }
+
+// async function translateText(text, target) {
+// 	// Translates the text into the target language. "text" can be a string for
+// 	// translating a single piece of text, or an array of strings for translating
+// 	// multiple texts.
+// 	let [translations] = await translate.translate(text, target);
+// 	translations = Array.isArray(translations) ? translations : [translations];
+// 	// console.log('Translations:');
+// 	let trans = '';
+// 	translations.forEach((translation, i) => {
+// 		trans += `${translation}`;
+// 	});
+// 	return trans;
+// }
+function fren() {
+    document.getElementById('title').innerHTML = "Discuter avec un astronaute";
+    document.getElementById('header1').innerHTML = "Bonjour, je suis astronaute. Dites bonjour ci-dessous";
+    document.getElementById('header2').innerHTML = "Demandez-moi n'importe quoi!";
+    document.getElementById('send').innerHTML = "Bavarder";
+    // document.getElementById('ideas').innerHTML = "Donner une idée";
+    document.getElementById('french').innerHTML = "Français";
+    document.getElementById('english').innerHTML = "Anglais";
+
+}
+function engl() {
+    document.getElementById('title').innerHTML = 'title';
+    document.getElementById('header1').innerHTML = 'title';
+    document.getElementById('header2').innerHTML = header2;
+    document.getElementById('send').innerHTML = send;
+    // document.getElementById('ideas').innerHTML = ideas;
+    document.getElementById('french').innerHTML = french;
+    document.getElementById('english').innerHTML = english;
 }

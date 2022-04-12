@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "verdant-cable-346903",
+  "private_key_id": "a19a6cc308c3e27b5d06b5a08d3b0a68c7b449db",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDm3betGej0muE2\nT/Sg0z092Aj6DzVbavzDAO7fqM2uym3Tt6IoUQu4WNw0bFGfM9I4hJ3goCslDrHE\nZ9lnjFH0qzMyhWtZMl6WxKV2DS2WobxKOOY+1Ep9aoxhkaBVdrO3jOYfbAPRkkQz\na7SF6c923qXZlvwA3fQooQNy2/jy6z6WS2goAYF6YePkkYLATV13AWBtClrVDjog\nhrkbqFkGtEn8jYakEbdWgXchyCdmWW9voLTjSwGB42zcfKsgi00UKdUc03EWx2Bm\n1O+NpwtW0HHHzrbsFegYYZ43QOm4rzcodd8a40EZpXx4Qrfy5hoPmH5hG/rQZO8s\n3z43Jy3xAgMBAAECgf8FkpOFRVCGjBN9prmQSCGLyMQRVLHNVTDStr8c5TOrEaZM\npKiz27Wq9kbHYMKB0lbowdw7oCTVEE22rWnG6bqEpGw85y7lEfWVd5grBvPTud7H\nhSdA2wtQLwfa8pGVCc8TJDOd79BkecFPeVKhmw1NQtajjChXQWTBsMJVxGQeCzLx\nZsXaXCzodL9QOldyDXNUZwWcaEz3+xxfzEbc7pdipZI9HF2j8bKnhvIJcQ+ABVvA\nrV+uoHlnfERSunja9acphYICgKvZr1fFGKtiWyKJi22r4+odrULcYpg6tmmWwX2j\nU+A7BHp3e47TcWXL0Xl9F1h4LEjnl2xmGAFP2pUCgYEA+1zaJjYye8bCr03rA4/M\ninbqEudgaVuRhOJ+O7Cb2qqchzElPtIVG98G1ocxynnjSU2NgNEGC1G/HlPVio2v\nsLJga3vy7CPmXSTpp1L69anisRU+T/RTuXj/soEtfUzCnXejVELgWZlJBWWZVevZ\nU+XrROAJnDZyJHc427BkF+sCgYEA6yAQG3MJ6Te+3Gy82Ygv4ePOj1QEviGjuUsB\nCYMDHTkLNFX/h0Qz+esyzp7zKTD81Hi+YkFWyVSxndy2SJyNIfo6Ltk77hQY+lyt\nYmhVmkkgSK6NqNHJmmzOu/dLkMqSaeUMNKHfvgi2XC9V86KPWL1+EmmSyxPuA6aE\n5zBN1pMCgYEA1ia+aM3F5vRoy2gL8MXjkphLRn3AAyMTcG5y87G8puiyYO+69rGP\ncGZr8fvOrN15ies7wmLSznP/6vurs9aQt27RfOFmDk9rpTGcq4Sj8Qai7xHVO9NC\nPYNb/Z3WvqjWKchS66fqcguJTcLIh45fYv5AmjZxmZg9WNoGJA08ya8CgYBXg5qb\nLOlOdeJDVvG/odH4qPr0HBib0BeJWyJqsOnS0a2a8Dto1HjoF6PUhhMJjOM+DicG\nmT09OJnXoRPz2NkrAWDwmQiWZ8KYRTB/xUe/YmJyyw2M/XClWsRj7/qfTNbMNWWi\nnXGS4NlHXJMIWMQ0CmvHXKY3khZwI2WqSy9dowKBgCotLa18sTT5gli0KIUh1FJn\n1NAO+u2A46JrEFLVjr6bnh9IfUv52GvsJlUEWxi4aMJ0eDvCF7tEMfNBzP+cY7oT\nEsNoUSdq6xNRkPZ7AimqPUdrjOP93eArKtRT+5Z3Jv4c4n6q8O9Scg/vceiDBmRC\n1l1kaauquHPVjKLSuRdN\n-----END PRIVATE KEY-----\n",
+  "client_email": "chatbot@verdant-cable-346903.iam.gserviceaccount.com",
+  "client_id": "100711075042439614013",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/chatbot%40verdant-cable-346903.iam.gserviceaccount.com"
+}
